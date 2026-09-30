@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emajasson</title>
-
   <style>
     body {
       margin: 0;
@@ -21,7 +20,6 @@
 
     h1 {
       text-align: center;
-      font-size: 32px;
     }
 
     .subtitulo {
@@ -71,14 +69,13 @@
       border: none;
       border-radius: 10px;
       font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-
   <div class="app">
-
     <h1>🤖 Emajasson</h1>
 
     <div class="subtitulo">
@@ -95,15 +92,12 @@
       <input id="texto" placeholder="Escribe un mensaje...">
       <button onclick="enviar()">Enviar</button>
     </div>
-
   </div>
 
   <script>
     function enviar() {
-
       const input = document.getElementById("texto");
       const chat = document.getElementById("chat");
-
       const mensaje = input.value.trim();
 
       if (mensaje === "") return;
@@ -118,11 +112,10 @@
 
       chat.innerHTML += `
         <div class="mensaje ia">
-          Soy Emajasson. Estoy aprendiendo. Pronto podré responderte con inteligencia artificial.
+          Soy Emajasson. Estoy aprendiendo. 🤖
         </div>
       `;
     }
   </script>
-
 </body>
 </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emajasson</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101827;
+      color: white;
+    }
+
+    .app {
+      max-width: 600px;
+      margin: auto;
+      padding: 25px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: #aaa;
+    }
+
+    #chat {
+      min-height: 400px;
+      background: #182235;
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .mensaje {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+    }
+
+    .ia {
+      background: #26364f;
+    }
+
+    .usuario {
+      background: #315c9b;
+      text-align: right;
+    }
+
+    .entrada {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <h1>🤖 Emajasson</h1>
+
+    <div class="subtitulo">
+      Tu asistente de inteligencia artificial
+    </div>
+
+    <div id="chat">
+      <div class="mensaje ia">
+        ¡Hola! Soy Emajasson. ¿En qué puedo ayudarte?
+      </div>
+    </div>
+
+    <div class="entrada">
+      <input id="texto" placeholder="Escribe un mensaje...">
+      <button onclick="enviar()">Enviar</button>
+    </div>
+
+  </div>
+
+  <script>
+    function enviar() {
+
+      const input = document.getElementById("texto");
+      const chat = document.getElementById("chat");
+
+      const mensaje = input.value.trim();
+
+      if (mensaje === "") return;
+
+      chat.innerHTML += `
+        <div class="mensaje usuario">
+          ${mensaje}
+        </div>
+      `;
+
+      input.value = "";
+
+      chat.innerHTML += `
+        <div class="mensaje ia">
+          Soy Emajasson. Estoy aprendiendo. Pronto podré responderte con inteligencia artificial.
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
-import express from "express";
-import OpenAI from "openai";
+const express = require("express");
+const OpenAI = require("openai");
 
 const app = express();
 
@@ -12,26 +12,34 @@ const client = new OpenAI({
 
 app.post("/api/chat", async (req, res) => {
   try {
-    const message = req.body.message;
+    const mensaje = req.body.message;
 
-    if (!message) {
-      return res.status(400).json({ error: "Missing message" });
+    if (!mensaje) {
+      return res.status(400).json({
+        error: "Escribe un mensaje."
+      });
     }
 
-    const response = await client.responses.create({
-      model: "gpt-5.5",
-      input: message
+    const respuesta = await client.responses.create({
+      model: "gpt-4o-mini",
+      input: mensaje
     });
 
-    res.json({ reply: response.output_text });
+    res.json({
+      reply: respuesta.output_text
+    });
+
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
+
+    res.status(500).json({
+      error: "Emajasson no pudo responder en este momento."
+    });
   }
 });
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Emajasson running on port ${PORT}`);
+  console.log("Emajasson está funcionando 🤖");
 });
